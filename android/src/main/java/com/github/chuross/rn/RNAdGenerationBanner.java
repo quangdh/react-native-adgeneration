@@ -40,19 +40,10 @@ public class RNAdGenerationBanner extends FrameLayout {
         this.reactContext = (ReactContext) context;
 
         setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-    }
-
-    public void setLocationId(String locationId) {
-        this.locationId = locationId;
-
-        Rect bannerRect = getBannerRect(frameSize);
-        if (bannerRect == null) return;
-
-        removeAllViews();
 
         adg = new ADG(getContext());
+        Rect bannerRect = getBannerRect(frameSize);
         adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
-        adg.setLocationId(locationId);
 
         adg.setAdListener(new ADGListener() {
             @Override
@@ -78,6 +69,11 @@ public class RNAdGenerationBanner extends FrameLayout {
         addView(adg);
     }
 
+    public void setLocationId(String locationId) {
+        this.locationId = locationId;
+        adg.setLocationId(locationId);
+    }
+
     @Override
     public void requestLayout() {
         super.requestLayout();
@@ -95,6 +91,9 @@ public class RNAdGenerationBanner extends FrameLayout {
 
         this.frameSize = frameSize;
         adg.setAdFrameSize(frameSize);
+
+        Rect bannerRect = getBannerRect(frameSize);
+        adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
     }
 
     public void load() {
