@@ -13,11 +13,12 @@
     "baseUrl": "https://github.com/chuross/react-native-ad-generation"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "react-native-adgeneraion",
+    "AdGeneartion"
   ],
   "author": {
-    "name": "chuross",
-    "email": "yourname@email.com"
+    "name": "chuross"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
