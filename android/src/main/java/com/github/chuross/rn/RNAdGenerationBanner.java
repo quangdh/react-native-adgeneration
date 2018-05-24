@@ -3,7 +3,6 @@ package com.github.chuross.rn;
 import android.content.Context;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.facebook.react.bridge.Arguments;
@@ -89,7 +88,7 @@ public class RNAdGenerationBanner extends FrameLayout {
         adg.setAdFrameSize(frameSize);
 
         Rect bannerRect = getBannerRect(frameSize);
-        adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
+        adg.setLayoutParams(new FrameLayout.LayoutParams(bannerRect.width(), bannerRect.height()));
     }
 
     public void load() {
