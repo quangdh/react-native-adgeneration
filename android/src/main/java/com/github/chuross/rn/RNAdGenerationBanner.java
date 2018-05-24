@@ -80,8 +80,6 @@ public class RNAdGenerationBanner extends FrameLayout {
      * @param bannerType sp|rect|tablet|large
      */
     public void setBannerType(String bannerType) {
-        if (adg == null) throw new IllegalStateException("need before set locationId");
-
         ADG.AdFrameSize frameSize = bannerType != null ? ADG.AdFrameSize.valueOf(bannerType.toUpperCase()) : null;
         if (frameSize == null) return;
 
