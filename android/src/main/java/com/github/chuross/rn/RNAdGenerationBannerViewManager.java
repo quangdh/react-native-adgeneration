@@ -30,7 +30,7 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
     @Override
     public Map<String, Object> getExportedCustomBubblingEventTypeConstants() {
         return MapBuilder.<String, Object>builder()
-                .put(RNAdGenerationBanner.EVENT_TAG_ON_MEASURE, MapBuilder.of("registrationName", "onMeasure"))
+                .put(RNAdGenerationBanner.EVENT_TAG_ON_MEASURE, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_MEASURE))
                 .build();
     }
 

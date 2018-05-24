@@ -17,7 +17,7 @@ import com.socdm.d.adgeneration.ADGListener;
 
 public class RNAdGenerationBanner extends FrameLayout {
 
-    public static final String EVENT_TAG_ON_MEASURE = "event_on_measure";
+    public static final String EVENT_TAG_ON_MEASURE = "onMeasure";
     private ReactContext reactContext;
     private ADG adg;
     private Runnable measureRunnable = new Runnable() {
