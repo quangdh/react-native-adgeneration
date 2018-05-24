@@ -30,6 +30,7 @@ export default class AdGenerationBanner extends Component {
 
   _handleOnMeasure(event) {
     const { width, height } = event.nativeEvent;
+    console.log(event.nativeEvent);
     this.setState({
       style: { width, height }
     });
