@@ -75,8 +75,4 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
         throw new UnsupportedOperationException("RNAdGenerationBanner not allow children.");
     }
 
-    @Override
-    public boolean needsCustomLayoutForChildren() {
-        return true;
-    }
 }

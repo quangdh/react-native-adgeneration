@@ -22,6 +22,7 @@ public class RNAdGenerationBanner extends FrameLayout {
     private String locationId;
     private ADG.AdFrameSize frameSize = ADG.AdFrameSize.SP;
     private ReactContext reactContext;
+    private ADG adg;
     private Runnable measureRunnable = new Runnable() {
         @Override
         public void run() {
@@ -29,6 +30,8 @@ public class RNAdGenerationBanner extends FrameLayout {
             int heightMeasureSpec = MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.EXACTLY);
             measure(widthMeasureSpec, heightMeasureSpec);
             layout(getLeft(), getTop(), getRight(), getBottom());
+
+            sendSizeChangedEvent(getWidth(), getHeight());
         }
     };
 
@@ -41,36 +44,15 @@ public class RNAdGenerationBanner extends FrameLayout {
 
     public void setLocationId(String locationId) {
         this.locationId = locationId;
-    }
-
-    @Override
-    public void requestLayout() {
-        super.requestLayout();
-        post(measureRunnable);
-    }
-
-    /**
-     * @param bannerType sp|rect|tablet|large
-     */
-    public void setBannerType(String bannerType) {
-        ADG.AdFrameSize frameSize = bannerType != null ? ADG.AdFrameSize.valueOf(bannerType.toUpperCase()) : null;
-        if (frameSize == null) return;
-
-        this.frameSize = frameSize;
-    }
-
-    public void load() {
-        if (locationId == null) return;
 
         Rect bannerRect = getBannerRect(frameSize);
         if (bannerRect == null) return;
 
         removeAllViews();
 
-        final ADG adg = new ADG(getContext());
+        adg = new ADG(getContext());
         adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
         adg.setLocationId(locationId);
-        adg.setAdFrameSize(frameSize);
 
         adg.setAdListener(new ADGListener() {
             @Override
@@ -94,19 +76,35 @@ public class RNAdGenerationBanner extends FrameLayout {
         });
 
         addView(adg);
+    }
+
+    @Override
+    public void requestLayout() {
+        super.requestLayout();
+        post(measureRunnable);
+    }
+
+    /**
+     * @param bannerType sp|rect|tablet|large
+     */
+    public void setBannerType(String bannerType) {
+        if (adg == null) throw new IllegalStateException("need before set locationId");
+
+        ADG.AdFrameSize frameSize = bannerType != null ? ADG.AdFrameSize.valueOf(bannerType.toUpperCase()) : null;
+        if (frameSize == null) return;
+
+        this.frameSize = frameSize;
+        adg.setAdFrameSize(frameSize);
+    }
+
+    public void load() {
+        if (locationId == null) return;
         adg.start();
     }
 
     private Rect getBannerRect(ADG.AdFrameSize frameSize) {
         if (frameSize == null) return null;
         return new Rect(0, 0, (int) PixelUtil.toPixelFromDIP(frameSize.getWidth()), (int) PixelUtil.toPixelFromDIP(frameSize.getHeight()));
-    }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
-        sendSizeChangedEvent(getMeasuredWidth(), getMeasuredHeight());
     }
 
     private void sendSizeChangedEvent(int width, int height) {
