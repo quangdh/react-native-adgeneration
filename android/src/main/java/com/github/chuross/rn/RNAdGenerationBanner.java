@@ -19,8 +19,6 @@ import com.socdm.d.adgeneration.ADGListener;
 public class RNAdGenerationBanner extends FrameLayout {
 
     public static final String EVENT_TAG_ON_MEASURE = "event_on_measure";
-    private String locationId;
-    private ADG.AdFrameSize frameSize = ADG.AdFrameSize.SP;
     private ReactContext reactContext;
     private ADG adg;
     private Runnable measureRunnable = new Runnable() {
@@ -42,7 +40,7 @@ public class RNAdGenerationBanner extends FrameLayout {
         setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         adg = new ADG(getContext());
-        Rect bannerRect = getBannerRect(frameSize);
+        Rect bannerRect = getBannerRect(ADG.AdFrameSize.SP);
         adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
 
         adg.setAdListener(new ADGListener() {
@@ -70,7 +68,6 @@ public class RNAdGenerationBanner extends FrameLayout {
     }
 
     public void setLocationId(String locationId) {
-        this.locationId = locationId;
         adg.setLocationId(locationId);
     }
 
@@ -89,7 +86,6 @@ public class RNAdGenerationBanner extends FrameLayout {
         ADG.AdFrameSize frameSize = bannerType != null ? ADG.AdFrameSize.valueOf(bannerType.toUpperCase()) : null;
         if (frameSize == null) return;
 
-        this.frameSize = frameSize;
         adg.setAdFrameSize(frameSize);
 
         Rect bannerRect = getBannerRect(frameSize);
@@ -97,7 +93,6 @@ public class RNAdGenerationBanner extends FrameLayout {
     }
 
     public void load() {
-        if (locationId == null) return;
         adg.start();
     }
 
