@@ -1,6 +1,5 @@
+import AdGenerationBanner from './libs/AdGenerationBanner';
 
-import { NativeModules } from 'react-native';
-
-const { RNAdGeneration } = NativeModules;
-
-export default RNAdGeneration;
+export default {
+  AdGenerationBanner
+};
