@@ -19,11 +19,11 @@ export default class AdGenerationBanner extends Component {
       ref={ref => this._bannerView = ref}
       {...this.props}
       style={[this.props.style, this.state.style]}
-      onMeasure={event => this.handleOnMeasure(event)}
+      onMeasure={event => this._handleOnMeasure(event)}
     />;
   }
 
-  handleOnMeasure(event) {
+  _handleOnMeasure(event) {
     const { width, height } = event.nativeEvent;
     this.setState({
       style: { width, height }
