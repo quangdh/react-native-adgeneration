@@ -37,7 +37,6 @@ export default class AdGenerationBanner extends Component {
   }
 
   load() {
-    console.log(UIManager.RNAdGenerationBanner.Commands);
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this._bannerView),
       UIManager.RNAdGenerationBanner.Commands.load,
