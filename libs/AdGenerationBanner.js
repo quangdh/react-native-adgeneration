@@ -5,6 +5,7 @@ import {
   UIManager,
   findNodeHandle,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 const RNAdGenerationBanner = requireNativeComponent('RNAdGenerationBanner');
 
@@ -43,15 +44,15 @@ export default class AdGenerationBanner extends Component {
 AdGenerationBanner.propTypes = {
   ...ViewPropTypes,
 
-  locationId: string,
+  locationId: PropTypes.string,
 
   // sp|rect|large|tablet
-  bannerType: string,
+  bannerType: PropTypes.string,
   
   // layout measured event
   // (width, height)
-  onMeasure: func,
+  onMeasure: PropTypes.func,
 
   // load ad
-  load: func
+  load: PropTypes.func
 };
