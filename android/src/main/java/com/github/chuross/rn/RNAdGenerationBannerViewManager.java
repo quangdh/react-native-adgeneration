@@ -6,6 +6,7 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
+import com.facebook.react.uimanager.annotations.ReactProp;
 
 import java.util.Map;
 
@@ -51,6 +52,16 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
             default:
                 throw new UnsupportedOperationException();
         }
+    }
+
+    @ReactProp(name = "locationId")
+    public void setLocationId(RNAdGenerationBanner view, String locationId) {
+        view.setLocationId(locationId);
+    }
+
+    @ReactProp(name = "bannerType")
+    public void setBannerType(RNAdGenerationBanner view, String bannerType) {
+        view.setBannerType(bannerType);
     }
 
     @Override
