@@ -105,6 +105,7 @@ public class RNAdGenerationBanner extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
         sendSizeChangedEvent(getMeasuredWidth(), getMeasuredHeight());
     }
 

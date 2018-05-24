@@ -15,6 +15,10 @@ export default class AdGenerationBanner extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    this.load();
+  }
+
   render() {
     return <RNAdGenerationBanner
       ref={ref => this._bannerView = ref}
@@ -33,6 +37,7 @@ export default class AdGenerationBanner extends Component {
   }
 
   load() {
+    console.log(UIManager.RNAdGenerationBanner.Commands);
     UIManager.dispatchViewManagerCommand(
       findNodeHandle(this._bannerView),
       UIManager.RNAdGenerationBanner.Commands.load,
