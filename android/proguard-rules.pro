@@ -1,0 +1,2 @@
+-keep public class com.socdm.d.adgeneration.** { *; }
+-keep public interface com.socdm.d.adgeneration.** { *; }

@@ -23,24 +23,30 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        consumerProguardFiles 'proguard-rules.pro'
     }
     lintOptions {
         abortOnError false
     }
 }
-
-repositories {
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        // Matches the RN Hello World template
-        // https://github.com/facebook/react-native/blob/1e8f3b11027fe0a7514b4fc97d0798d3c64bc895/local-cli/templates/HelloWorld/android/build.gradle#L21
-        url "$projectDir/../node_modules/react-native/android"
+allprojects {
+    repositories {
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            // Matches the RN Hello World template
+            // https://github.com/facebook/react-native/blob/1e8f3b11027fe0a7514b4fc97d0798d3c64bc895/local-cli/templates/HelloWorld/android/build.gradle#L21
+            url "$projectDir/../node_modules/react-native/android"
+        }
+        mavenCentral()
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
+        maven { url 'https://adgeneration.github.io/ADG-Android-SDK/repository' }
     }
-    mavenCentral()
 }
 
 dependencies {
     compile 'com.facebook.react:react-native:+'
+    compile 'com.socdm.d.adgeneration:adg:2.11.5'
+    compile 'com.google.android.gms:play-services-base:15.0.1'
 }
 
 def configureReactNativePom(def pom) {
