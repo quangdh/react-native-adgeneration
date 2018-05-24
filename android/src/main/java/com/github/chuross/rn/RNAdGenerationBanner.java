@@ -41,7 +41,7 @@ public class RNAdGenerationBanner extends FrameLayout {
 
         adg = new ADG(getContext());
         Rect bannerRect = getBannerRect(ADG.AdFrameSize.SP);
-        adg.setLayoutParams(new ViewGroup.LayoutParams(bannerRect.width(), bannerRect.height()));
+        adg.setLayoutParams(new FrameLayout.LayoutParams(bannerRect.width(), bannerRect.height()));
 
         adg.setAdListener(new ADGListener() {
             @Override
