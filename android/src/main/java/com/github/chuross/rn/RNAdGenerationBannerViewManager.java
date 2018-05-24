@@ -74,4 +74,9 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
     public void removeView(RNAdGenerationBanner parent, View view) {
         throw new UnsupportedOperationException("RNAdGenerationBanner not allow children.");
     }
+
+    @Override
+    public boolean needsCustomLayoutForChildren() {
+        return true;
+    }
 }
