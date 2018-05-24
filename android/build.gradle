@@ -47,6 +47,7 @@ dependencies {
     compile 'com.facebook.react:react-native:+'
     compile 'com.socdm.d.adgeneration:adg:2.11.5'
     compile 'com.google.android.gms:play-services-base:15.0.1'
+    compile 'com.google.android.gms:play-services-ads-identifier:15.0.1'
 }
 
 def configureReactNativePom(def pom) {
