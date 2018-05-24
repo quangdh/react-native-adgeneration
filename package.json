@@ -1,0 +1,36 @@
+
+{
+  "name": "react-native-ad-generation",
+  "title": "React Native Ad Generation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuross/react-native-ad-generation.git",
+    "baseUrl": "https://github.com/chuross/react-native-ad-generation"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "chuross",
+    "email": "yourname@email.com"
+  },
+  "license": "MIT",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md",
+  "peerDependencies": {
+    
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.44.1"
+  },
+  "devDependencies": {
+    
+    "react": "16.0.0-alpha.6",
+    "react-native": "^0.44.1" 
+  }
+}
