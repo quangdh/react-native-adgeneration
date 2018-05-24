@@ -1,5 +1,6 @@
 package com.github.chuross.rn;
 
+import android.content.Context;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.view.ViewGroup;
@@ -31,9 +32,9 @@ public class RNAdGenerationBanner extends FrameLayout {
         }
     };
 
-    public RNAdGenerationBanner(@NonNull ReactContext context) {
+    public RNAdGenerationBanner(@NonNull Context context) {
         super(context);
-        this.reactContext = context;
+        this.reactContext = (ReactContext) context;
 
         setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
     }
