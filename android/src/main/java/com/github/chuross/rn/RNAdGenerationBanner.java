@@ -36,11 +36,11 @@ public class RNAdGenerationBanner extends FrameLayout {
         super(context);
         this.reactContext = (ReactContext) context;
 
-        setLayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+        setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         adg = new ADG(getContext());
         Rect bannerRect = getBannerRect(ADG.AdFrameSize.SP);
-        adg.setLayoutParams(new FrameLayout.LayoutParams(bannerRect.width(), bannerRect.height()));
+        adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
 
         adg.setAdListener(new ADGListener() {
             @Override
@@ -88,7 +88,7 @@ public class RNAdGenerationBanner extends FrameLayout {
         adg.setAdFrameSize(frameSize);
 
         Rect bannerRect = getBannerRect(frameSize);
-        adg.setLayoutParams(new FrameLayout.LayoutParams(bannerRect.width(), bannerRect.height()));
+        adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
     }
 
     public void load() {
