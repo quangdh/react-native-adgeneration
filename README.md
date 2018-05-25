@@ -1,5 +1,6 @@
 
 # react-native-adgeneration
+https://badge.fury.io/js/react-native-adgeneration.svg
 
 ## Installation
 ```
