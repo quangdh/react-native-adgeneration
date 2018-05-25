@@ -1,5 +1,5 @@
 
-# react-native-ad-generation
+# react-native-adgeneration
 
 ## Installation
 ```
