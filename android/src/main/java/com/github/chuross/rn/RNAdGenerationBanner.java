@@ -97,13 +97,13 @@ public class RNAdGenerationBanner extends FrameLayout {
         Rect bannerRect = getBannerRect(frameSize);
         adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
 
-        sendSizeChangedEvent(bannerRect.width(), bannerRect.height());
+        sendSizeChangedEvent(frameSize);
     }
 
-    private void sendSizeChangedEvent(int width, int height) {
+    private void sendSizeChangedEvent(ADG.AdFrameSize frameSize) {
         WritableMap event = Arguments.createMap();
-        event.putInt("width", (int) PixelUtil.toPixelFromDIP(width));
-        event.putInt("height", (int) PixelUtil.toPixelFromDIP(height));
+        event.putInt("width", frameSize.getWidth());
+        event.putInt("height", frameSize.getHeight());
 
         sendEvent(EVENT_TAG_ON_MEASURE, event);
     }
