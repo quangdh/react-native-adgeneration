@@ -3,7 +3,7 @@
 
 ## Installation
 ```
-$ npm install react-native-ad-generation --save
+$ npm install react-native-adgeneration --save
 $ react-native link react-native-adgeneration
 ```
 
