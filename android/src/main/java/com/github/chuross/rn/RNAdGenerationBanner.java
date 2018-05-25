@@ -102,8 +102,8 @@ public class RNAdGenerationBanner extends FrameLayout {
 
     private void sendSizeChangedEvent(int width, int height) {
         WritableMap event = Arguments.createMap();
-        event.putInt("width", width);
-        event.putInt("height", height);
+        event.putInt("width", (int) PixelUtil.toPixelFromDIP(width));
+        event.putInt("height", (int) PixelUtil.toPixelFromDIP(height));
 
         sendEvent(EVENT_TAG_ON_MEASURE, event);
     }
