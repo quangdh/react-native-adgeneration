@@ -8,7 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		289A75F91F7D1C4500E34F27 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289A75E91F7D1BF800E34F27 /* libReact.a */; };
-		B3E7B58A1CC2AC0600A0062D /* RNAdGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNAdGeneration.m */; };
+		40149E8701A30692144BDC62 /* libPods-RNAdGeneration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D63B841647CD89613629E96 /* libPods-RNAdGeneration.a */; };
+		D4D74C3C20B8604200105B58 /* RNAdGenerationBannerModule.m in Sources */ = {isa = PBXBuildFile; fileRef = D4D74C3B20B8604200105B58 /* RNAdGenerationBannerModule.m */; };
+		D4EFC45220BC45F7000BC82F /* RNAdGenerationBannerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EFC45120BC45F7000BC82F /* RNAdGenerationBannerManager.m */; };
+		D4EFC46420BC47DA000BC82F /* RNAdGenerationBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = D4EFC46320BC47DA000BC82F /* RNAdGenerationBanner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +71,62 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		D4072B3A20B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BDC1FC498900052F4D5;
+			remoteInfo = jsinspector;
+		};
+		D4072B3C20B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EBF21BFA1FC4989A0052F4D5;
+			remoteInfo = "jsinspector-tvOS";
+		};
+		D4072B3E20B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7ECE1E25DB7D00323FB7;
+			remoteInfo = "third-party";
+		};
+		D4072B4020B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D3C1EBD27B6005632C8;
+			remoteInfo = "third-party-tvOS";
+		};
+		D4072B4220B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 139D7E881E25C6D100323FB7;
+			remoteInfo = "double-conversion";
+		};
+		D4072B4420B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
+			remoteInfo = "double-conversion-tvOS";
+		};
+		D4072B4620B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F3131F5F2E4B0010BF04;
+			remoteInfo = privatedata;
+		};
+		D4072B4820B81A7600EA0FEE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 289A75DD1F7D1BF800E34F27 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
+			remoteInfo = "privatedata-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,8 +144,14 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNAdGeneration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNAdGeneration.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		289A75DD1F7D1BF800E34F27 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNAdGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNAdGeneration.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* RNAdGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNAdGeneration.m; sourceTree = "<group>"; };
+		5D63B841647CD89613629E96 /* libPods-RNAdGeneration.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RNAdGeneration.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99FA4AF1C0E6D5741FC98233 /* Pods-RNAdGeneration.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNAdGeneration.release.xcconfig"; path = "Pods/Target Support Files/Pods-RNAdGeneration/Pods-RNAdGeneration.release.xcconfig"; sourceTree = "<group>"; };
+		B161D897BA1E897541ECED03 /* Pods-RNAdGeneration.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNAdGeneration.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RNAdGeneration/Pods-RNAdGeneration.debug.xcconfig"; sourceTree = "<group>"; };
+		D498A14A20BC422300CBF15D /* RNAdGenerationBannerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAdGenerationBannerManager.h; sourceTree = "<group>"; };
+		D4D74C3B20B8604200105B58 /* RNAdGenerationBannerModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAdGenerationBannerModule.m; sourceTree = "<group>"; };
+		D4EFC45120BC45F7000BC82F /* RNAdGenerationBannerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAdGenerationBannerManager.m; sourceTree = "<group>"; };
+		D4EFC46320BC47DA000BC82F /* RNAdGenerationBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNAdGenerationBanner.m; sourceTree = "<group>"; };
+		D4EFC46520BC47E4000BC82F /* RNAdGenerationBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNAdGenerationBanner.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				289A75F91F7D1C4500E34F27 /* libReact.a in Frameworks */,
+				40149E8701A30692144BDC62 /* libPods-RNAdGeneration.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +186,14 @@
 				289A75F31F7D1BF800E34F27 /* libcxxreact.a */,
 				289A75F51F7D1BF800E34F27 /* libjschelpers.a */,
 				289A75F71F7D1BF800E34F27 /* libjschelpers.a */,
+				D4072B3B20B81A7600EA0FEE /* libjsinspector.a */,
+				D4072B3D20B81A7600EA0FEE /* libjsinspector-tvOS.a */,
+				D4072B3F20B81A7600EA0FEE /* libthird-party.a */,
+				D4072B4120B81A7600EA0FEE /* libthird-party.a */,
+				D4072B4320B81A7600EA0FEE /* libdouble-conversion.a */,
+				D4072B4520B81A7600EA0FEE /* libdouble-conversion.a */,
+				D4072B4720B81A7600EA0FEE /* libprivatedata.a */,
+				D4072B4920B81A7600EA0FEE /* libprivatedata-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -127,6 +201,7 @@
 		289A75F81F7D1C4500E34F27 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5D63B841647CD89613629E96 /* libPods-RNAdGeneration.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -134,12 +209,25 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				B3E7B5881CC2AC0600A0062D /* RNAdGeneration.h */,
-				B3E7B5891CC2AC0600A0062D /* RNAdGeneration.m */,
+				D4EFC46520BC47E4000BC82F /* RNAdGenerationBanner.h */,
+				D4EFC46320BC47DA000BC82F /* RNAdGenerationBanner.m */,
+				D4EFC45120BC45F7000BC82F /* RNAdGenerationBannerManager.m */,
+				D498A14A20BC422300CBF15D /* RNAdGenerationBannerManager.h */,
+				D4D74C3B20B8604200105B58 /* RNAdGenerationBannerModule.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				289A75DD1F7D1BF800E34F27 /* React.xcodeproj */,
 				289A75F81F7D1C4500E34F27 /* Frameworks */,
+				9720968B5DAA99EA9B3B2368 /* Pods */,
 			);
+			sourceTree = "<group>";
+		};
+		9720968B5DAA99EA9B3B2368 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B161D897BA1E897541ECED03 /* Pods-RNAdGeneration.debug.xcconfig */,
+				99FA4AF1C0E6D5741FC98233 /* Pods-RNAdGeneration.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +237,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNAdGeneration" */;
 			buildPhases = (
+				A9AD38A51515A4D7B6054B90 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
+				81CE86FB43E1D606B543B74B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -173,6 +263,7 @@
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0920;
 					};
 				};
 			};
@@ -256,14 +347,111 @@
 			remoteRef = 289A75F61F7D1BF800E34F27 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D4072B3B20B81A7600EA0FEE /* libjsinspector.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsinspector.a;
+			remoteRef = D4072B3A20B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B3D20B81A7600EA0FEE /* libjsinspector-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsinspector-tvOS.a";
+			remoteRef = D4072B3C20B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B3F20B81A7600EA0FEE /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = D4072B3E20B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B4120B81A7600EA0FEE /* libthird-party.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libthird-party.a";
+			remoteRef = D4072B4020B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B4320B81A7600EA0FEE /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = D4072B4220B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B4520B81A7600EA0FEE /* libdouble-conversion.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libdouble-conversion.a";
+			remoteRef = D4072B4420B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B4720B81A7600EA0FEE /* libprivatedata.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libprivatedata.a;
+			remoteRef = D4072B4620B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D4072B4920B81A7600EA0FEE /* libprivatedata-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libprivatedata-tvOS.a";
+			remoteRef = D4072B4820B81A7600EA0FEE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81CE86FB43E1D606B543B74B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RNAdGeneration/Pods-RNAdGeneration-resources.sh",
+				"${PODS_ROOT}/AdGeneration/ADG.framework/Versions/A/Resources/ADG-Resources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ADG-Resources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RNAdGeneration/Pods-RNAdGeneration-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9AD38A51515A4D7B6054B90 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RNAdGeneration-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3E7B58A1CC2AC0600A0062D /* RNAdGeneration.m in Sources */,
+				D4EFC46420BC47DA000BC82F /* RNAdGenerationBanner.m in Sources */,
+				D4EFC45220BC45F7000BC82F /* RNAdGenerationBannerManager.m in Sources */,
+				D4D74C3C20B8604200105B58 /* RNAdGenerationBannerModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,33 +553,46 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B161D897BA1E897541ECED03 /* Pods-RNAdGeneration.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNAdGeneration;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNAdGeneration-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99FA4AF1C0E6D5741FC98233 /* Pods-RNAdGeneration.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../../React/**",
 					"$(SRCROOT)/../../react-native/React/**",
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNAdGeneration;
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "RNAdGeneration-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

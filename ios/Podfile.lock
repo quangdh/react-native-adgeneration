@@ -1,0 +1,16 @@
+PODS:
+  - AdGeneration (2.11.5)
+
+DEPENDENCIES:
+  - AdGeneration (~> 2.11.5)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AdGeneration
+
+SPEC CHECKSUMS:
+  AdGeneration: ab3dca0bb51451c115fe5d061b15f34469053de2
+
+PODFILE CHECKSUM: f52002e88ab95d7ee7a907c22d2a2cbce5acdca7
+
+COCOAPODS: 1.5.2

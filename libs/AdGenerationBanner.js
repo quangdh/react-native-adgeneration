@@ -16,7 +16,8 @@ export default class AdGenerationBanner extends Component {
   }
 
   componentDidMount() {
-    this.load();
+    // iOS側のpropsがcomponentDidMountよりも後に呼ばれるので遅延させる
+    setTimeout(() => this.load());
   }
 
   render() {

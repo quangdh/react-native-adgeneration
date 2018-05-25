@@ -19,7 +19,11 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m}"
   s.requires_arc = true
 
-  s.dependency "React"
+  s.static_framework = true
+
+  s.dependency 'AdGeneration'
+  s.dependency 'React'
+  s.dependency 'yoga'
   #s.dependency "others"
 end
 
