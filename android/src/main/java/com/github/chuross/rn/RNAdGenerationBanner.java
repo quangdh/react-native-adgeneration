@@ -27,8 +27,6 @@ public class RNAdGenerationBanner extends FrameLayout {
             int heightMeasureSpec = MeasureSpec.makeMeasureSpec(getHeight(), MeasureSpec.EXACTLY);
             measure(widthMeasureSpec, heightMeasureSpec);
             layout(getLeft(), getTop(), getRight(), getBottom());
-
-            sendSizeChangedEvent(getWidth(), getHeight());
         }
     };
 
@@ -87,6 +85,8 @@ public class RNAdGenerationBanner extends FrameLayout {
 
         Rect bannerRect = getBannerRect(frameSize);
         adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
+
+        sendSizeChangedEvent(bannerRect.width(), bannerRect.height());
     }
 
     public void load() {
