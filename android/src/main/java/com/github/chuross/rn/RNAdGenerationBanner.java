@@ -37,8 +37,7 @@ public class RNAdGenerationBanner extends FrameLayout {
         setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 
         adg = new ADG(getContext());
-        Rect bannerRect = getBannerRect(ADG.AdFrameSize.SP);
-        adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
+        refreshBannerLayoutParams(ADG.AdFrameSize.SP);
 
         adg.setAdListener(new ADGListener() {
             @Override
@@ -82,11 +81,7 @@ public class RNAdGenerationBanner extends FrameLayout {
         if (frameSize == null) return;
 
         adg.setAdFrameSize(frameSize);
-
-        Rect bannerRect = getBannerRect(frameSize);
-        adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
-
-        sendSizeChangedEvent(bannerRect.width(), bannerRect.height());
+        refreshBannerLayoutParams(frameSize);
     }
 
     public void load() {
@@ -96,6 +91,13 @@ public class RNAdGenerationBanner extends FrameLayout {
     private Rect getBannerRect(ADG.AdFrameSize frameSize) {
         if (frameSize == null) return null;
         return new Rect(0, 0, (int) PixelUtil.toPixelFromDIP(frameSize.getWidth()), (int) PixelUtil.toPixelFromDIP(frameSize.getHeight()));
+    }
+
+    private void refreshBannerLayoutParams(ADG.AdFrameSize frameSize) {
+        Rect bannerRect = getBannerRect(frameSize);
+        adg.setLayoutParams(new LayoutParams(bannerRect.width(), bannerRect.height()));
+
+        sendSizeChangedEvent(bannerRect.width(), bannerRect.height());
     }
 
     private void sendSizeChangedEvent(int width, int height) {
