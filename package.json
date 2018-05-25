@@ -1,6 +1,6 @@
 {
   "name": "react-native-adgeneration",
-  "title": "React Native Ad Generation",
+  "title": "AdGeneration for ReactNative",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chuross/react-native-ad-generation.git",
-    "baseUrl": "https://github.com/chuross/react-native-ad-generation"
+    "url": "git+https://github.com/chuross/react-native-adgeneration.git",
+    "baseUrl": "https://github.com/chuross/react-native-adgeneration"
   },
   "keywords": [
     "react-native",
