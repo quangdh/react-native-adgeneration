@@ -13,7 +13,7 @@ add maven repositories
 
 **./android/build.gradle**
 
-```
+```gradle
 allprojects {
     repositories {
         ....
