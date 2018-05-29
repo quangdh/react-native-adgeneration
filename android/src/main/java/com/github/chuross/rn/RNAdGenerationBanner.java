@@ -88,8 +88,9 @@ public class RNAdGenerationBanner extends FrameLayout {
         if (adg != null) adg.start();
     }
 
-    public void stop() {
+    public void destroy() {
         if (adg != null) adg.stop();
+        adg = null;
     }
 
     private Rect getBannerRect(ADG.AdFrameSize frameSize) {

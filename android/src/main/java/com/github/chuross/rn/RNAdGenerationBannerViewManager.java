@@ -28,7 +28,7 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
 
     @Override
     public void onDropViewInstance(RNAdGenerationBanner view) {
-        view.stop();
+        view.destroy();
         super.onDropViewInstance(view);
     }
 
