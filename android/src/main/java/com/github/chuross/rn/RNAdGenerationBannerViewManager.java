@@ -26,6 +26,12 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
         return new RNAdGenerationBanner(reactContext);
     }
 
+    @Override
+    public void onDropViewInstance(RNAdGenerationBanner view) {
+        view.stop();
+        super.onDropViewInstance(view);
+    }
+
     @Nullable
     @Override
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
