@@ -1,0 +1,13 @@
+# node
+node_modules/
+
+# android
+android/.gradle/
+android/.idea/
+android/build
+
+# iOS
+ios/Pods/
+ios/vendor/
+ios/Gemfile
+ios/Gemfile.lock
