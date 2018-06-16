@@ -54,7 +54,7 @@ public class RNAdGenerationBanner extends FrameLayout {
                     case NO_AD:
                         break;
                     default:
-                        adg.start();
+                        if (adg != null) adg.start();
                         break;
                 }
             }
