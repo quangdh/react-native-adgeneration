@@ -9,8 +9,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chuross/react-native-adgeneration.git",
-    "baseUrl": "https://github.com/chuross/react-native-adgeneration"
+    "url": "git+https://github.com/3minute/react-native-adgeneration.git",
+    "baseUrl": "https://github.com/3minute/react-native-adgeneration"
   },
   "keywords": [
     "react-native",
