@@ -37,6 +37,11 @@
     if (self.bannerType == nil) {
         return;
     }
+    if (self.bannerType == nil) {
+        if(self.bannerWidth == nil || self.bannerHeight == nil) {
+            return;
+        }
+    }
     
     NSMutableDictionary *params = @{}.mutableCopy;
     [params setObject:self.locationId forKey:@"locationid"];
@@ -59,11 +64,14 @@
         event = @{ @"width": @(kADGAdSize_Tablet_Width), @"height": @(kADGAdSize_Tablet_Height) };
     }
     if ([self.bannerType isEqualToString:@"free"]) {
-        event = @{ @"width": @(self.bannerWidth), @"height": @(self.bannerHeight) };
+        event = @{ @"width": self.bannerWidth, @"height": self.bannerHeight };
     }
     
     if (self.onMeasure) {
         self.onMeasure(event);
+    }
+    if (self.onLayout) {
+        self.onLayout(event);
     }
     
     self.adg = [[ADGManagerViewController new] initWithAdParams:params adView:self];
