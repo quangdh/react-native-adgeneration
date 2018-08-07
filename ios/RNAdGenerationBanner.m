@@ -58,6 +58,10 @@
         [params setObject:@(kADG_AdType_Tablet) forKey:@"adtype"];
         event = @{ @"width": @(kADGAdSize_Tablet_Width), @"height": @(kADGAdSize_Tablet_Height) };
     }
+    if ([self.bannerType isEqualToString:@"free"]) {
+        [params setObject:@(kADG_AdType_Tablet) forKey:@"adtype"];
+        event = @{ @"width": self.bannerWidth, @"height": self.bannerHeight };
+    }
     
     if (self.onMeasure) {
         self.onMeasure(event);
