@@ -55,11 +55,11 @@ export default class AdGenerationBanner extends Component {
     var {
       bannerType,
     } = this.props;
-    if (bannerType != 'free') {
-      this.setState({
-        style: { width, height }
-      });
-    }
+    // if (bannerType != 'free') {
+    this.setState({
+      style: { width, height }
+    });
+    // }
     if (this.props.onMeasure) this.props.onMeasure(event);
   }
 
