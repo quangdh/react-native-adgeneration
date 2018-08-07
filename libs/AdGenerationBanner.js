@@ -29,15 +29,15 @@ export default class AdGenerationBanner extends Component {
       bannerHeight,
       bannerType,
     } = this.props;
-    if (bannerType === 'free') {
-      var style = {
-        width: bannerWidth,
-        height: bannerHeight,
-      }
-      this.setState({
-        style: style
-      });
-    }
+    // if (bannerType === 'free') {
+    //   var style = {
+    //     width: bannerWidth,
+    //     height: bannerHeight,
+    //   }
+    //   this.setState({
+    //     style: style
+    //   });
+    // }
   }
 
   render() {
@@ -46,15 +46,15 @@ export default class AdGenerationBanner extends Component {
       {...this.props}
       style={[this.props.style, this.state.style]}
       onMeasure={event => this._handleOnMeasure(event)}
-      onLayout={event => this._handleOnLayout(event)}
+    // onLayout={event => this._handleOnLayout(event)}
     />;
   }
 
   _handleOnMeasure(event) {
     const { width, height } = event.nativeEvent;
-    var {
-      bannerType,
-    } = this.props;
+    // var {
+    //   bannerType,
+    // } = this.props;
     // if (bannerType != 'free') {
     this.setState({
       style: { width, height }
