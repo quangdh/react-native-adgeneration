@@ -65,13 +65,15 @@
     }
     if ([self.bannerType isEqualToString:@"free"]) {
         [params setObject:@(kADG_AdType_Free) forKey:@"adtype"];
+        [params setObject:self.bannerHeight forKey:@"h"];
+        [params setObject:self.bannerWidth forKey:@"w"];
         event = @{ @"width": self.bannerWidth, @"height": self.bannerHeight };
     }
     
     if (self.onMeasure) {
         self.onMeasure(event);
     }
-    
+
     self.adg = [[ADGManagerViewController new] initWithAdParams:params adView:self];
     self.adg.delegate = self;
     [self.adg loadRequest];

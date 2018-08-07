@@ -24,20 +24,6 @@ export default class AdGenerationBanner extends Component {
   }
 
   componentWillMount() {
-    var {
-      bannerWidth,
-      bannerHeight,
-      bannerType,
-    } = this.props;
-    // if (bannerType === 'free') {
-    //   var style = {
-    //     width: bannerWidth,
-    //     height: bannerHeight,
-    //   }
-    //   this.setState({
-    //     style: style
-    //   });
-    // }
   }
 
   render() {
@@ -46,33 +32,15 @@ export default class AdGenerationBanner extends Component {
       {...this.props}
       style={[this.props.style, this.state.style]}
       onMeasure={event => this._handleOnMeasure(event)}
-    // onLayout={event => this._handleOnLayout(event)}
     />;
   }
 
   _handleOnMeasure(event) {
     const { width, height } = event.nativeEvent;
-    // var {
-    //   bannerType,
-    // } = this.props;
-    // if (bannerType != 'free') {
     this.setState({
       style: { width, height }
     });
-    // }
     if (this.props.onMeasure) this.props.onMeasure(event);
-  }
-
-  _handleOnLayout(event) {
-    const { x, y, height, width } = event.nativeEvent.layout;
-    const layoutSize = {
-      layoutHeight: height,
-      layoutWidth: width,
-      layoutLeft: x,
-      layoutTop: y,
-    };
-    this.setState({ layoutProps: layoutSize });
-    if (this.props.onLayout) this.props._handleOnLayout(event);
   }
 
   load() {
@@ -99,8 +67,6 @@ AdGenerationBanner.propTypes = {
   // layout measured event
   // (width, height)
   onMeasure: PropTypes.func,
-
-  onLayout: PropTypes.func,
 
   // load ad
   load: PropTypes.func
