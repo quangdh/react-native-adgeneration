@@ -71,9 +71,6 @@
     if (self.onMeasure) {
         self.onMeasure(event);
     }
-    if (self.onLayout) {
-        self.onLayout(event);
-    }
     
     self.adg = [[ADGManagerViewController new] initWithAdParams:params adView:self];
     self.adg.delegate = self;
