@@ -89,7 +89,7 @@ AdGenerationBanner.propTypes = {
 
   locationId: PropTypes.string,
 
-  // sp|rect|large|tablet
+  // sp|rect|large|tablet|free
   bannerType: PropTypes.string,
 
   // require as bannerType:free
