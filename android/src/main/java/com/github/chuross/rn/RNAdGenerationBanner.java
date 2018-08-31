@@ -20,6 +20,8 @@ public class RNAdGenerationBanner extends FrameLayout {
     public static final String EVENT_TAG_ON_MEASURE = "onMeasure";
     private ReactContext reactContext;
     private ADG adg;
+    private int freeBannerWidth;
+    private int freeBannerHeight;
     private Runnable measureRunnable = new Runnable() {
         @Override
         public void run() {
@@ -81,7 +83,18 @@ public class RNAdGenerationBanner extends FrameLayout {
         if (frameSize == null) return;
 
         adg.setAdFrameSize(frameSize);
+        if (bannerType.equalsIgnoreCase("FREE")){
+            adg.setAdFrameSize(frameSize.setSize(freeBannerWidth,freeBannerHeight));
+        }
         refreshBannerLayoutParams(frameSize);
+    }
+
+    public void setBannerWidth(int bannerWidth) {
+        freeBannerWidth = bannerWidth;
+    }
+
+    public void setBannerHeight(int bannerHeight) {
+        freeBannerHeight = bannerHeight;
     }
 
     public void load() {

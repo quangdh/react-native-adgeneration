@@ -60,6 +60,16 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
         }
     }
 
+    @ReactProp(name = "bannerHeight")
+    public void setBannerHeight(RNAdGenerationBanner view, int bannerHeight) {
+        view.setBannerHeight(bannerHeight);
+    }
+
+    @ReactProp(name = "bannerWidth")
+    public void setBannerWidth(RNAdGenerationBanner view, int bannerWidth) {
+        view.setBannerWidth(bannerWidth);
+    }
+
     @ReactProp(name = "locationId")
     public void setLocationId(RNAdGenerationBanner view, String locationId) {
         view.setLocationId(locationId);
