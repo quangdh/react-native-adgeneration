@@ -15,8 +15,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -51,6 +51,7 @@ rootProject.allprojects {
 dependencies {
     compile 'com.facebook.react:react-native:+'
     compile 'com.socdm.d.adgeneration:adg:2.11.5'
+    compile 'com.facebook.android:audience-network-sdk:5.+'
     compile 'com.google.android.gms:play-services-base:15.0.1'
     compile 'com.google.android.gms:play-services-ads-identifier:15.0.1'
 }
