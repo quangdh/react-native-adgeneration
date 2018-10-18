@@ -28,7 +28,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:src="@android:color/transparent" />
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/adg_nativead_view_mediaview_container"
                 android:layout_width="160dp"
                 android:layout_height="90dp"
@@ -39,7 +39,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1">
 
-            </FrameLayout>
+            </RelativeLayout>
 
             <TextView
                 android:id="@+id/adg_nativead_view_title"
