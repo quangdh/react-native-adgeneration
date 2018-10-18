@@ -325,7 +325,7 @@ class FBNativeAdView extends RelativeLayout {
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         mContext = context;
 
-        View layout         = LayoutInflater.from(context).inflate(R.layout.adg_ad_view, this);
+        View layout         = LayoutInflater.from(context).inflate(R.layout.adg_fb_ad_view, this);
         mContainer          = layout.findViewById(R.id.adg_nativead_view_container);
         mIconImageView      = (AdIconView) layout.findViewById(R.id.adg_nativead_view_icon);
         mMediaViewContainer = (RelativeLayout) layout.findViewById(R.id.adg_nativead_view_mediaview_container);
