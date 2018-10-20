@@ -299,8 +299,6 @@ class FBNativeAdView extends RelativeLayout {
     private AdIconView mIconImageView;
     private RelativeLayout mMediaViewContainer;
     private TextView mSocialContextLabel;
-    private TextView mCTALabel;
-    private TextView mBodyLabel;
     private TextView mTitleLabel;
 
     public FBNativeAdView(Context context) {
@@ -344,9 +342,6 @@ class FBNativeAdView extends RelativeLayout {
         // タイトル
         mTitleLabel.setText(nativeAd.getAdHeadline());
 
-        // 本文
-        mBodyLabel.setText(nativeAd.getAdBodyText());
-
         // ソーシャルコンテキスト
         mSocialContextLabel.setText(nativeAd.getAdSocialContext());
 
@@ -360,8 +355,6 @@ class FBNativeAdView extends RelativeLayout {
         //クリックイベント
         List<View> clickableViews = new ArrayList<>();
         clickableViews.add(mTitleLabel);
-        clickableViews.add(mCTALabel);
-        clickableViews.add(mBodyLabel);
         clickableViews.add(mSocialContextLabel);
 
         nativeAd.registerViewForInteraction(mContainer, mediaView, mIconImageView, clickableViews);
