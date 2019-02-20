@@ -122,7 +122,7 @@
 {
     NSLog(@"Did tap the ad.");
     if (self.onTapAd) {
-        self.onTapAd(nil);
+        self.onTapAd(@{@"locationId":self.locationId});
     }
 }
 
@@ -186,7 +186,7 @@
     
     [mediationNativeAd setTapEvent:self handler:^{
         if (self.onTapAd) {
-            self.onTapAd(nil);
+            self.onTapAd(@{@"locationId":self.locationId});
         }
     }];
     
@@ -272,7 +272,7 @@
 -(void)nativeAdDidClick:(FBNativeAd *)nativeAd
 {
     if (self.onTapAd) {
-        self.onTapAd(nil);
+        self.onTapAd(@{@"locationId":self.locationId});
     }
 }
 @end
