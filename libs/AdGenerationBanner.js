@@ -16,6 +16,7 @@ export default class AdGenerationBanner extends Component {
       bannerWidth: 0,
       bannerHeight: 0,
     };
+    this._handleOnTapAd = this._handleOnTapAd.bind(this);
   }
 
   componentDidMount() {
@@ -32,6 +33,7 @@ export default class AdGenerationBanner extends Component {
       {...this.props}
       style={[this.props.style, this.state.style]}
       onMeasure={event => this._handleOnMeasure(event)}
+      onTapAd={this._handleOnTapAd}
     />;
   }
 
@@ -41,6 +43,10 @@ export default class AdGenerationBanner extends Component {
       style: { width, height }
     });
     if (this.props.onMeasure) this.props.onMeasure(event);
+  }
+  
+  _handleOnTapAd() {
+    if (this.props.onTapAd) this.props.onTapAd();
   }
 
   load() {
