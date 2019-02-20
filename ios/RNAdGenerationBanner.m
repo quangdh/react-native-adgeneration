@@ -12,7 +12,7 @@
 /**
  * Extension
  */
-@interface RNAdGenerationBanner() <ADGManagerViewControllerDelegate>
+@interface RNAdGenerationBanner() <ADGManagerViewControllerDelegate, FBNativeAdDelegate>
 
 @property (nonatomic) ADGManagerViewController *adg;
 
@@ -118,6 +118,14 @@
     }
 }
 
+- (void)ADGManagerViewControllerDidTapAd:(ADGManagerViewController *)adgManagerViewController
+{
+    NSLog(@"Did tap the ad.");
+    if (self.onTapAd) {
+        self.onTapAd(@{@"locationId":self.locationId});
+    }
+}
+
 - (UIView *)createNativeAdView:(ADGNativeAd *)mediationNativeAd
 {
     // セルの全体View
@@ -176,7 +184,11 @@
     [view addSubview:imageView];
     [view addSubview:infoView];
     
-    [mediationNativeAd setTapEvent:self handler:nil];
+    [mediationNativeAd setTapEvent:self handler:^{
+        if (self.onTapAd) {
+            self.onTapAd(@{@"locationId":self.locationId});
+        }
+    }];
     
     return view;
 }
@@ -245,6 +257,7 @@
     [view addSubview:imageView];
     [view addSubview:infoView];
     
+    mediationFBAd.delegate = self;
     // クリック領域
     NSArray *clickableViews = @[imageView, infoView];
     [mediationFBAd registerViewForInteraction:self
@@ -254,5 +267,12 @@
                                clickableViews:clickableViews];
     
     return view;
+}
+
+-(void)nativeAdDidClick:(FBNativeAd *)nativeAd
+{
+    if (self.onTapAd) {
+        self.onTapAd(@{@"locationId":self.locationId});
+    }
 }
 @end
