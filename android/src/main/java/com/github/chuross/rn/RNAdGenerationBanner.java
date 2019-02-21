@@ -14,6 +14,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -36,6 +37,7 @@ import com.socdm.d.adgeneration.ADGListener;
 import com.socdm.d.adgeneration.nativead.ADGInformationIconView;
 import com.socdm.d.adgeneration.nativead.ADGMediaView;
 import com.socdm.d.adgeneration.nativead.ADGNativeAd;
+import com.socdm.d.adgeneration.nativead.ADGNativeAdOnClickListener;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ import java.util.List;
 public class RNAdGenerationBanner extends FrameLayout {
 
     public static final String EVENT_TAG_ON_MEASURE = "onMeasure";
+    public static final String EVENT_TAG_ON_TAP_AD = "onTapAd";
     private ReactContext reactContext;
     private ADG adg;
     private int freeBannerWidth;
@@ -79,10 +82,12 @@ public class RNAdGenerationBanner extends FrameLayout {
                 View view = null;
                 if (o instanceof ADGNativeAd) {
                     ADGNativeAdView nativeAdView = new ADGNativeAdView(context);
+                    nativeAdView.setLocationId(adg.getLocationId());
                     nativeAdView.apply((ADGNativeAd) o);
                     view = nativeAdView;
                 } else if (o instanceof NativeAd) {
                     FBNativeAdView nativeAdView = new FBNativeAdView(context);
+                    nativeAdView.setLocationId(adg.getLocationId());
                     nativeAdView.apply((NativeAd) o);
                     view = nativeAdView;
                 }
@@ -107,6 +112,10 @@ public class RNAdGenerationBanner extends FrameLayout {
                         if (adg != null) adg.start();
                         break;
                 }
+            }
+            @Override
+            public void onClickAd() {
+                sendOnTapAdEvent();
             }
         });
 
@@ -178,10 +187,17 @@ public class RNAdGenerationBanner extends FrameLayout {
         reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), eventTag, event);
     }
 
+    public void sendOnTapAdEvent() {
+        WritableMap event = Arguments.createMap();
+        event.putString("locationId", adg.getLocationId());
+        sendEvent(EVENT_TAG_ON_TAP_AD, event);
+    }
+
 }
 
 class ADGNativeAdView extends RelativeLayout {
 
+    private Context mContext;
     private Activity mActivity;
     private RelativeLayout mContainer;
     private ImageView mIconImageView;
@@ -190,6 +206,7 @@ class ADGNativeAdView extends RelativeLayout {
     private FrameLayout mMediaViewContainer;
     private TextView mSponsoredLabel;
     private TextView mCTALabel;
+    private String mLocationId;
 
     public ADGNativeAdView(Context context) {
         this(context, null);
@@ -211,6 +228,7 @@ class ADGNativeAdView extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        mContext = context;
         if (context instanceof Activity) {
             mActivity = (Activity)context;
         }
@@ -226,6 +244,10 @@ class ADGNativeAdView extends RelativeLayout {
         borders.setColor(Color.WHITE);
         borders.setCornerRadius(10);
 
+    }
+
+    public void setLocationId(String locationId) {
+        mLocationId = locationId;
     }
 
     public void apply(ADGNativeAd nativeAd) {
@@ -260,8 +282,18 @@ class ADGNativeAdView extends RelativeLayout {
             mSponsoredLabel.setText("sponsored");
         }
 
+        ADGNativeAdOnClickListener listener;
+
         // クリックイベント
-        nativeAd.setClickEvent(getContext(), mContainer, null);
+        nativeAd.setClickEvent(getContext(), mContainer, new ADGNativeAdOnClickListener() {
+            @Override
+            public void onClickAd() {
+                super.onClickAd();
+                WritableMap event = Arguments.createMap();
+                event.putString("locationId", mLocationId);
+                ((ReactContext)mContext).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, event);
+            }
+        });
     }
 
     /**
@@ -300,6 +332,7 @@ class FBNativeAdView extends RelativeLayout {
     private RelativeLayout mMediaViewContainer;
     private TextView mSocialContextLabel;
     private TextView mTitleLabel;
+    private String mLocationId;
 
     public FBNativeAdView(Context context) {
         this(context, null);
@@ -334,6 +367,10 @@ class FBNativeAdView extends RelativeLayout {
         mSocialContextLabel.setText("");
     }
 
+    public void setLocationId(String locationId) {
+        mLocationId = locationId;
+    }
+
     public void apply(NativeAd nativeAd) {
         // MediaView
         MediaView mediaView = new MediaView(mContext);
@@ -358,5 +395,14 @@ class FBNativeAdView extends RelativeLayout {
         clickableViews.add(mSocialContextLabel);
 
         nativeAd.registerViewForInteraction(mContainer, mediaView, mIconImageView, clickableViews);
+        nativeAd.setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                WritableMap sendEvent = Arguments.createMap();
+                sendEvent.putString("locationId", mLocationId);
+                ((ReactContext)mContext).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, sendEvent);
+                return false;
+            }
+        });
     }
 }
