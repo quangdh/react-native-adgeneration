@@ -35,9 +35,10 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
     @Nullable
     @Override
     public Map<String, Object> getExportedCustomDirectEventTypeConstants() {
-        return MapBuilder.<String, Object>builder()
-                .put(RNAdGenerationBanner.EVENT_TAG_ON_MEASURE, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_MEASURE))
-                .build();
+        MapBuilder.Builder<String, Object> builder = MapBuilder.builder();
+        builder.put(RNAdGenerationBanner.EVENT_TAG_ON_MEASURE, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_MEASURE));
+        builder.put(RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD));
+        return builder.build();
     }
 
     @Nullable
