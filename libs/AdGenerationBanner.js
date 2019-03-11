@@ -62,7 +62,8 @@ AdGenerationBanner.propTypes = {
   ...ViewPropTypes,
 
   locationId: PropTypes.string,
-
+  //1 : normal | 2 : article detail
+  locationType: PropTypes.string,
   // sp|rect|large|tablet|free
   bannerType: PropTypes.string,
 

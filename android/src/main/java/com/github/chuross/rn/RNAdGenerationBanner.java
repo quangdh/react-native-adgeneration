@@ -401,6 +401,16 @@ class FBNativeAdView extends RelativeLayout {
         // ソーシャルコンテキスト
         mSocialContextLabel.setText(nativeAd.getAdSocialContext());
 
+        // 本文
+        if(mBodyLabel) {
+            mBodyLabel.setText(nativeAd.getAdBodyText());
+        }
+
+        //cta
+        if(mCtaLabel) {
+            mCtaLabel.setText(nativeAd.getAdCallToAction());
+        }
+
         // AdChoice
         AdChoicesView adChoicesView = new AdChoicesView(mContext, nativeAd, true);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) adChoicesView.getLayoutParams();

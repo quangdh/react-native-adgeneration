@@ -48,6 +48,9 @@
     
     NSMutableDictionary *params = @{}.mutableCopy;
     [params setObject:self.locationId forKey:@"locationid"];
+    if(self.locationType) {
+        [params setObject:self.locationType forKey:@"locationType"];
+    }
     
     NSDictionary *event;
     if ([self.bannerType isEqualToString:@"sp"]) {

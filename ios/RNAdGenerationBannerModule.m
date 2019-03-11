@@ -10,6 +10,7 @@
 @interface RCT_EXTERN_MODULE(RNAdGenerationBannerManager, RCTViewManager)
 
 RCT_EXPORT_VIEW_PROPERTY(locationId, NSString)
+RCT_EXPORT_VIEW_PROPERTY(locationType, NSString)
 RCT_EXPORT_VIEW_PROPERTY(bannerType, NSString)
 RCT_EXPORT_VIEW_PROPERTY(bannerWidth, NSNumber)
 RCT_EXPORT_VIEW_PROPERTY(bannerHeight, NSNumber)
