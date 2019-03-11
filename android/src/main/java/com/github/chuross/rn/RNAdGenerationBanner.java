@@ -52,6 +52,7 @@ public class RNAdGenerationBanner extends FrameLayout {
     private ADG adg;
     private int freeBannerWidth;
     private int freeBannerHeight;
+    private String locationType;
     private Runnable measureRunnable = new Runnable() {
         @Override
         public void run() {
@@ -88,6 +89,7 @@ public class RNAdGenerationBanner extends FrameLayout {
                 } else if (o instanceof NativeAd) {
                     FBNativeAdView nativeAdView = new FBNativeAdView(context);
                     nativeAdView.setLocationId(adg.getLocationId());
+                    nativeAdView.setLocationType(this.locationType);
                     nativeAdView.apply((NativeAd) o);
                     view = nativeAdView;
                 }
@@ -124,6 +126,10 @@ public class RNAdGenerationBanner extends FrameLayout {
 
     public void setLocationId(String locationId) {
         adg.setLocationId(locationId);
+    }
+
+    public void setLocationType(String locationType) {
+        this.locationType = locationType;
     }
 
     @Override
@@ -332,7 +338,10 @@ class FBNativeAdView extends RelativeLayout {
     private RelativeLayout mMediaViewContainer;
     private TextView mSocialContextLabel;
     private TextView mTitleLabel;
+    private TextView mCtaLabel;
+    private TextView mBodyLabel;
     private String mLocationId;
+    private String mLocationType;
 
     public FBNativeAdView(Context context) {
         this(context, null);
@@ -355,8 +364,14 @@ class FBNativeAdView extends RelativeLayout {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         mContext = context;
-
-        View layout         = LayoutInflater.from(context).inflate(R.layout.adg_fb_ad_view, this);
+        View layout;
+        if(mLocationType == "2") {
+            layout         = LayoutInflater.from(context).inflate(R.layout.adg_fb_ad_view_in_article, this);
+            mBodyLabel          = (TextView) layout.findViewById(R.id.adg_nativead_view_body);
+            mCtaLabel           = (TextView) layout.findViewById(R.id.adg_nativead_view_cta);
+        }else {
+            layout         = LayoutInflater.from(context).inflate(R.layout.adg_fb_ad_view, this);
+        }
         mContainer          = layout.findViewById(R.id.adg_nativead_view_container);
         mIconImageView      = (AdIconView) layout.findViewById(R.id.adg_nativead_view_icon);
         mMediaViewContainer = (RelativeLayout) layout.findViewById(R.id.adg_nativead_view_mediaview_container);
@@ -369,6 +384,10 @@ class FBNativeAdView extends RelativeLayout {
 
     public void setLocationId(String locationId) {
         mLocationId = locationId;
+    }
+
+    public void setLocationType(String locationType) {
+        mLocationType = locationType;
     }
 
     public void apply(NativeAd nativeAd) {
