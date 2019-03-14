@@ -75,6 +75,9 @@ AdGenerationBanner.propTypes = {
   // (width, height)
   onMeasure: PropTypes.func,
 
+  //ad tap event
+  onTapAd: PropTypes.func,
+
   // load ad
   load: PropTypes.func
 };
