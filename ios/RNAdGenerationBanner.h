@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSString *locationType;
 @property (nonatomic, copy) RCTDirectEventBlock onMeasure;
 @property (nonatomic, copy) RCTDirectEventBlock onTapAd;
+@property (nonatomic, copy) RCTDirectEventBlock onReceiveAdFailed;
 
 - (void)load;
 

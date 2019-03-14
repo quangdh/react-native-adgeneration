@@ -113,6 +113,9 @@
         case kADGErrorCodeNeedConnection:
         case kADGErrorCodeExceedLimit:
         case kADGErrorCodeNoAd:
+            if (self.onReceiveAdFailed) {
+                self.onReceiveAdFailed(@{@"locationId":self.locationId, @"reason":@"noAd"});
+            }
             break;
         default:
             [self.adg loadRequest];
