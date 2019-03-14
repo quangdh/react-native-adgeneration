@@ -33,7 +33,17 @@ export default class AdGenerationBanner extends Component {
       style={[this.props.style, this.state.style]}
       onMeasure={event => this._handleOnMeasure(event)}
       onTapAd={event => this._handleOnTapAd(event)}
+      onReceiveAdFailed = {event => this._handleOnReceiveAdFailed(event)}
     />;
+  }
+
+  _handleOnReceiveAdFailed(event) {
+    if(this.props.locationType == '2') {
+      this.setState({
+        style: { width:0, height:0 }
+      });
+    }
+    if (this.props.onReceiveAdFailed) this.props.onReceiveAdFailed(event);
   }
 
   _handleOnMeasure(event) {
@@ -62,7 +72,8 @@ AdGenerationBanner.propTypes = {
   ...ViewPropTypes,
 
   locationId: PropTypes.string,
-
+  //1 : normal | 2 : article detail
+  locationType: PropTypes.string,
   // sp|rect|large|tablet|free
   bannerType: PropTypes.string,
 
@@ -73,6 +84,11 @@ AdGenerationBanner.propTypes = {
   // layout measured event
   // (width, height)
   onMeasure: PropTypes.func,
+
+  onReceiveAdFailed: PropTypes.func,
+
+  //ad tap event
+  onTapAd: PropTypes.func,
 
   // load ad
   load: PropTypes.func
