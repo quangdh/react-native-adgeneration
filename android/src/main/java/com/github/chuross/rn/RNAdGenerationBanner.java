@@ -84,12 +84,13 @@ public class RNAdGenerationBanner extends FrameLayout {
                 if (o instanceof ADGNativeAd) {
                     ADGNativeAdView nativeAdView = new ADGNativeAdView(context);
                     nativeAdView.setLocationId(adg.getLocationId());
+                    nativeAdView.setLocationType(locationType);
                     nativeAdView.apply((ADGNativeAd) o);
                     view = nativeAdView;
                 } else if (o instanceof NativeAd) {
                     FBNativeAdView nativeAdView = new FBNativeAdView(context);
                     nativeAdView.setLocationId(adg.getLocationId());
-                    nativeAdView.setLocationType(this.locationType);
+                    nativeAdView.setLocationType(locationType);
                     nativeAdView.apply((NativeAd) o);
                     view = nativeAdView;
                 }
@@ -208,11 +209,13 @@ class ADGNativeAdView extends RelativeLayout {
     private RelativeLayout mContainer;
     private ImageView mIconImageView;
     private TextView mTitleLabel;
+    private TextView mBodyLabel;
     private TextView mDescLabel;
     private FrameLayout mMediaViewContainer;
     private TextView mSponsoredLabel;
     private TextView mCTALabel;
     private String mLocationId;
+    private String mLocationType;
 
     public ADGNativeAdView(Context context) {
         this(context, null);
@@ -238,7 +241,14 @@ class ADGNativeAdView extends RelativeLayout {
         if (context instanceof Activity) {
             mActivity = (Activity)context;
         }
-        View layout = LayoutInflater.from(context).inflate(R.layout.adg_ad_view, this);
+        View layout;
+
+        if(mLocationType == "2") {
+            layout         = LayoutInflater.from(context).inflate(R.layout.adg_ad_view_in_article, this);
+            mBodyLabel          = (TextView) layout.findViewById(R.id.adg_nativead_view_body);
+        }else {
+            layout = LayoutInflater.from(context).inflate(R.layout.adg_ad_view, this);
+        }
         mContainer = (RelativeLayout) layout.findViewById(R.id.adg_nativead_view_container);
         mIconImageView = (ImageView) layout.findViewById(R.id.adg_nativead_view_icon);
         mTitleLabel = (TextView) layout.findViewById(R.id.adg_nativead_view_title);
@@ -256,6 +266,10 @@ class ADGNativeAdView extends RelativeLayout {
         mLocationId = locationId;
     }
 
+    public void setLocationType(String locationType) {
+        mLocationType = locationType;
+    }
+
     public void apply(ADGNativeAd nativeAd) {
 
         // アイコン画像
@@ -267,6 +281,11 @@ class ADGNativeAdView extends RelativeLayout {
         // タイトル
         if (nativeAd.getTitle() != null) {
             mTitleLabel.setText(nativeAd.getTitle().getText());
+        }
+
+        // 本文
+        if(mBodyLabel != null) {
+            mBodyLabel.setText(nativeAd.getDesc().getValue());
         }
 
         // メイン画像・動画
@@ -402,12 +421,12 @@ class FBNativeAdView extends RelativeLayout {
         mSocialContextLabel.setText(nativeAd.getAdSocialContext());
 
         // 本文
-        if(mBodyLabel) {
+        if(mBodyLabel != null) {
             mBodyLabel.setText(nativeAd.getAdBodyText());
         }
 
         //cta
-        if(mCtaLabel) {
+        if(mCtaLabel != null) {
             mCtaLabel.setText(nativeAd.getAdCallToAction());
         }
 
