@@ -38,6 +38,7 @@ public class RNAdGenerationBannerViewManager extends ViewGroupManager<RNAdGenera
         MapBuilder.Builder<String, Object> builder = MapBuilder.builder();
         builder.put(RNAdGenerationBanner.EVENT_TAG_ON_MEASURE, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_MEASURE));
         builder.put(RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD));
+        builder.put(RNAdGenerationBanner.EVENT_TAG_ON_RECEIVE_AD_FAILED, MapBuilder.of("registrationName", RNAdGenerationBanner.EVENT_TAG_ON_RECEIVE_AD_FAILED));
         return builder.build();
     }
 

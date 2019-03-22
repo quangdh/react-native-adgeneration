@@ -48,6 +48,7 @@ public class RNAdGenerationBanner extends FrameLayout {
 
     public static final String EVENT_TAG_ON_MEASURE = "onMeasure";
     public static final String EVENT_TAG_ON_TAP_AD = "onTapAd";
+    public static final String EVENT_TAG_ON_RECEIVE_AD_FAILED = "onReceiveAdFailed";
     private ReactContext reactContext;
     private ADG adg;
     private int freeBannerWidth;
@@ -82,14 +83,13 @@ public class RNAdGenerationBanner extends FrameLayout {
 
                 View view = null;
                 if (o instanceof ADGNativeAd) {
-                    ADGNativeAdView nativeAdView = new ADGNativeAdView(context);
+                    ADGNativeAdView nativeAdView = new ADGNativeAdView(context, null, Integer.parseInt(locationType));
                     nativeAdView.setLocationId(adg.getLocationId());
                     nativeAdView.apply((ADGNativeAd) o);
                     view = nativeAdView;
                 } else if (o instanceof NativeAd) {
-                    FBNativeAdView nativeAdView = new FBNativeAdView(context);
+                    FBNativeAdView nativeAdView = new FBNativeAdView(context, null, Integer.parseInt(locationType));
                     nativeAdView.setLocationId(adg.getLocationId());
-                    nativeAdView.setLocationType(this.locationType);
                     nativeAdView.apply((NativeAd) o);
                     view = nativeAdView;
                 }
@@ -109,6 +109,9 @@ public class RNAdGenerationBanner extends FrameLayout {
                     case EXCEED_LIMIT:
                     case NEED_CONNECTION:
                     case NO_AD:
+                        WritableMap event = Arguments.createMap();
+                        event.putString("locationId", adg.getLocationId());
+                        sendEvent(EVENT_TAG_ON_RECEIVE_AD_FAILED, event);
                         break;
                     default:
                         if (adg != null) adg.start();
@@ -208,11 +211,14 @@ class ADGNativeAdView extends RelativeLayout {
     private RelativeLayout mContainer;
     private ImageView mIconImageView;
     private TextView mTitleLabel;
+    private TextView mBodyLabel;
     private TextView mDescLabel;
     private FrameLayout mMediaViewContainer;
     private TextView mSponsoredLabel;
     private TextView mCTALabel;
     private String mLocationId;
+    private int mLocationType;
+    private ReactContext mReactContext;
 
     public ADGNativeAdView(Context context) {
         this(context, null);
@@ -238,7 +244,16 @@ class ADGNativeAdView extends RelativeLayout {
         if (context instanceof Activity) {
             mActivity = (Activity)context;
         }
-        View layout = LayoutInflater.from(context).inflate(R.layout.adg_ad_view, this);
+        mLocationType = defStyleAttr;
+        mReactContext = (ReactContext)context;
+        View layout;
+
+        if(mLocationType == 2) {
+            layout         = LayoutInflater.from(context).inflate(R.layout.adg_ad_view_in_article, this);
+            mBodyLabel          = (TextView) layout.findViewById(R.id.adg_nativead_view_body);
+        }else {
+            layout = LayoutInflater.from(context).inflate(R.layout.adg_ad_view, this);
+        }
         mContainer = (RelativeLayout) layout.findViewById(R.id.adg_nativead_view_container);
         mIconImageView = (ImageView) layout.findViewById(R.id.adg_nativead_view_icon);
         mTitleLabel = (TextView) layout.findViewById(R.id.adg_nativead_view_title);
@@ -269,6 +284,11 @@ class ADGNativeAdView extends RelativeLayout {
             mTitleLabel.setText(nativeAd.getTitle().getText());
         }
 
+        // 本文
+        if(mBodyLabel != null) {
+            mBodyLabel.setText(nativeAd.getDesc().getValue());
+        }
+
         // メイン画像・動画
         if (nativeAd.canLoadMedia()) {
             ADGMediaView mediaView = new ADGMediaView(mActivity);
@@ -297,7 +317,7 @@ class ADGNativeAdView extends RelativeLayout {
                 super.onClickAd();
                 WritableMap event = Arguments.createMap();
                 event.putString("locationId", mLocationId);
-                ((ReactContext)mContext).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, event);
+                mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, event);
             }
         });
     }
@@ -341,7 +361,8 @@ class FBNativeAdView extends RelativeLayout {
     private TextView mCtaLabel;
     private TextView mBodyLabel;
     private String mLocationId;
-    private String mLocationType;
+    private int mLocationType;
+    private ReactContext mReactContext;
 
     public FBNativeAdView(Context context) {
         this(context, null);
@@ -364,8 +385,10 @@ class FBNativeAdView extends RelativeLayout {
 
     private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         mContext = context;
+        mReactContext = (ReactContext)context;
         View layout;
-        if(mLocationType == "2") {
+        mLocationType = defStyleAttr;
+        if(mLocationType == 2) {
             layout         = LayoutInflater.from(context).inflate(R.layout.adg_fb_ad_view_in_article, this);
             mBodyLabel          = (TextView) layout.findViewById(R.id.adg_nativead_view_body);
             mCtaLabel           = (TextView) layout.findViewById(R.id.adg_nativead_view_cta);
@@ -386,10 +409,6 @@ class FBNativeAdView extends RelativeLayout {
         mLocationId = locationId;
     }
 
-    public void setLocationType(String locationType) {
-        mLocationType = locationType;
-    }
-
     public void apply(NativeAd nativeAd) {
         // MediaView
         MediaView mediaView = new MediaView(mContext);
@@ -402,12 +421,12 @@ class FBNativeAdView extends RelativeLayout {
         mSocialContextLabel.setText(nativeAd.getAdSocialContext());
 
         // 本文
-        if(mBodyLabel) {
+        if(mBodyLabel != null) {
             mBodyLabel.setText(nativeAd.getAdBodyText());
         }
 
         //cta
-        if(mCtaLabel) {
+        if(mCtaLabel != null) {
             mCtaLabel.setText(nativeAd.getAdCallToAction());
         }
 
@@ -429,7 +448,7 @@ class FBNativeAdView extends RelativeLayout {
             public boolean onTouch(View v, MotionEvent event) {
                 WritableMap sendEvent = Arguments.createMap();
                 sendEvent.putString("locationId", mLocationId);
-                ((ReactContext)mContext).getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, sendEvent);
+                mReactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), RNAdGenerationBanner.EVENT_TAG_ON_TAP_AD, sendEvent);
                 return false;
             }
         });
