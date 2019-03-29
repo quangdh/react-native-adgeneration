@@ -26,7 +26,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="4dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:color/transparent" />
+                android:src="@android:color/transparent" />
 
             <TextView
                 android:id="@+id/adg_nativead_view_title"
