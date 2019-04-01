@@ -219,13 +219,13 @@
         
         // 左部：イメージ、動画View
         UIView *imageView = [[UIView alloc] initWithFrame:CGRectMake(0,0,180,[self.bannerHeight floatValue])];
-        UIImageView *imageIconView;
-        if (mediationNativeAd.iconImage.url.length > 0) {
-            NSURL *iconImageUrl = [NSURL URLWithString:mediationNativeAd.iconImage.url];
-            NSData *iconImageData = [NSData dataWithContentsOfURL:iconImageUrl];
-            imageIconView = [[UIImageView alloc]initWithFrame:CGRectMake(10,10,160,90)];
-            imageIconView.image = [UIImage imageWithData:iconImageData];
-            [imageView addSubview:imageIconView];
+        UIImageView *imageMainView;
+        if (mediationNativeAd.mainImage.url.length > 0) {
+            NSURL *mainImageUrl = [NSURL URLWithString:mediationNativeAd.mainImage.url];
+            NSData *mainImageData = [NSData dataWithContentsOfURL:mainImageUrl];
+            imageMainView = [[UIImageView alloc]initWithFrame:CGRectMake(10,10,160,90)];
+            imageMainView.image = [UIImage imageWithData:mainImageData];
+            [imageView addSubview:imageMainView];
         }
         
         // 右部：タイトル、PR、スポンサー名View
