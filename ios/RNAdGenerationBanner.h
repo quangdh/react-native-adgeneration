@@ -13,12 +13,7 @@
 
 @property (nonatomic, copy) NSString *locationId;
 @property (nonatomic, copy) NSString *bannerType;
-@property (nonatomic, copy) NSNumber *bannerWidth;
-@property (nonatomic, copy) NSNumber *bannerHeight;
-@property (nonatomic, copy) NSString *locationType;
 @property (nonatomic, copy) RCTDirectEventBlock onMeasure;
-@property (nonatomic, copy) RCTDirectEventBlock onTapAd;
-@property (nonatomic, copy) RCTDirectEventBlock onReceiveAdFailed;
 
 - (void)load;
 
