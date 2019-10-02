@@ -2,12 +2,13 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
 
     dependencies {
         // Matches the RN Hello World template
         // https://github.com/facebook/react-native/blob/1e8f3b11027fe0a7514b4fc97d0798d3c64bc895/local-cli/templates/HelloWorld/android/build.gradle#L8
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:3.2.0'
     }
 }
 
@@ -16,7 +17,6 @@ apply plugin: 'maven'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.3"
 
     defaultConfig {
         minSdkVersion 16
@@ -49,11 +49,12 @@ rootProject.allprojects {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
-    compile 'com.socdm.d.adgeneration:adg:2.13.2'
-    compile 'com.facebook.android:audience-network-sdk:4.99.1'
-    compile 'com.google.android.gms:play-services-base:15.0.1'
-    compile 'com.google.android.gms:play-services-ads-identifier:15.0.1'
+    implementation 'com.facebook.react:react-native:+'
+    implementation 'com.socdm.d.adgeneration:adg:2.13.2'
+    implementation 'com.facebook.android:audience-network-sdk:4.99.1'
+    //noinspection GradleCompatible
+    implementation 'com.google.android.gms:play-services-base:15.0.1'
+    implementation 'com.google.android.gms:play-services-ads-identifier:15.0.1'
 }
 
 def configureReactNativePom(def pom) {
